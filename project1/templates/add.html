@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form</title>
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    number:<input type="text" name="num1">
+    number:<input type="text" name="num2">
+    <input type="submit" value="add">
+</form>
+{{z}}
+</body>
+</html>

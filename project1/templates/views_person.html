@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method='POST' action="search">
+    {% csrf_token %}
+    enter name:<input type="text" name="name">
+    <input type='submit' value="search">
+</form>
+
+{% if x %}
+  {% for i in x %}
+    <ul>
+      <li>Name: {{ i.name }}</li>
+      <li>Age: {{ i.age }}</li>
+      <li>Place: {{ i.place }}</li>
+      <li>Email: {{ i.email }}</li>
+    </ul>
+  {% endfor %}
+{% endif %}
+<h1>personal details</h1>
+  {% for i in p %}
+    <ul>
+      <li>Name: {{ i.name }}</li>
+      <li>Age: {{ i.age }}</li>
+      <li>Place: {{ i.place }}</li>
+      <li>Email: {{ i.email }}</li>
+      <li>photo:<img src="{{i.photo.url}}" height="30px" width="20px"></li>
+    </ul>
+
+    <a href="update_person/{{i.id}}">update</a>
+    <a href="dlt_person/{{i.id}}">delete</a>
+  {% endfor %}
+
+
+{% if z %}
+  <form method="POST">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <th>name</th>
+        <td><input type="text" name="name" value="{{z.name}}"></td>
+      </tr>
+      <tr>
+        <th>age</th>
+        <td><input type="number" name="age" value="{{z.age}}"></td>
+      </tr>
+      <tr>
+        <th>place</th>
+        <td><input type="text" name="place" value="{{z.place}}"></td>
+      </tr>
+      <tr>
+        <th>email</th>
+        <td><input type="email" name="email" value="{{z.email}}"></td>
+      </tr>
+      <tr>
+        <td><input type="submit" value="updated"></td>
+      </tr>
+    </table>
+  </form>
+{% endif %}
+</body>
+</html>
